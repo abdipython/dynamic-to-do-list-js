@@ -7,8 +7,20 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTasks();
 
     // Function to add a task (with optional save)
-    function addTask(taskText, save = true) {
-        if (!taskText) return;
+    function addTask() {
+        const taskText = taskInput.value.trim();
+        if (!taskText)
+            alert("Please enter a task.");
+             return;
+        }
+            addButton.addEventListener('click', addTask);
+
+    // ✔ Add event listener for Enter key
+    taskInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+
 
         const li = document.createElement('li');
         li.textContent = taskText;
